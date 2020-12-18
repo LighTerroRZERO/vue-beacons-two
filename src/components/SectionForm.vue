@@ -15,9 +15,9 @@
       nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
   </div>
 
-  <form>
+  <form @submit="nextStep()">
     <FormInput v-for="input in inputs" :key="input.id" :item="input"/>
-    <button v-on:click="nextStep()">Next</button>
+    <button>Next</button>
   </form>
 </div>
 </template>
@@ -42,7 +42,7 @@ export default {
           id: 3, type: 'email', name: 'email', placeholder: 'Enter Email',
         },
       ],
-      step: 1,
+      step: localStorage.getItem('memoryStep') || 1,
       stepFirst: true,
       stepSecond: false,
       stepThird: false,
@@ -53,16 +53,19 @@ export default {
             this.stepFirst = true;
             this.stepSecond = false;
             this.stepThird = false;
+            localStorage.setItem('memoryStep', this.step);
             break;
           case 2:
             this.stepFirst = false;
             this.stepSecond = true;
             this.stepThird = false;
+            localStorage.setItem('memoryStep', this.step);
             break;
           case 3:
             this.stepFirst = false;
             this.stepSecond = false;
             this.stepThird = true;
+            localStorage.setItem('memoryStep', this.step);
             break;
           default:
             this.step = 1;
@@ -123,6 +126,7 @@ export default {
       border-radius: 30px;
       width: 200px;
       height: 55px;
+      outline: none;
       background: #fff;
       color: #43cb83;
       font-family: Lato, sans-serif;
