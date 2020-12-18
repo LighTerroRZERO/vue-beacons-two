@@ -4,10 +4,10 @@
   <div class="support_mail">support@frontdeskhelpers.com</div>
   <div class="footer-links">
     <div class="social_links">
-      <a href="#" class="social"><i></i></a>
-      <a href="#" class="social"><span></span></a>
-      <a href="#" class="social"><span></span></a>
-      <a href="#" class="social"><span></span></a>
+      <a href="#" class="social"><i class="fb"></i></a>
+      <a href="#" class="social"><i class="g"></i></a>
+      <a href="#" class="social"><i class="y"></i></a>
+      <a href="#" class="social"><i class="in"></i></a>
     </div>
 
     <div class="links">
@@ -54,9 +54,27 @@ export default {
       color: #fff;
       font-size: 26px;
       transition: 0.3s;
+      i {
+        font-family: FontAwesome;
+      }
+      .fb:before {
+        content: "\f09a";
+      }
+      .g:before {
+        content: "\f0d5";
+      }
+      .y:before {
+        content: "\f167";
+      }
+      .in:before {
+        content: "\f0e1";
+      }
       &:hover {
         background-color: #fff;
         transition: 0.3s;
+        i {
+          color: #5bd293;
+        }
       }
     }
   }
