@@ -1,28 +1,12 @@
 <template>
   <div id="app">
-    <header>
-      <Header/>
-      <img src="@/assets/img/head-abslut.png" alt class='absolute-image'>
-    </header>
+    <Header/>
 
-    <section class="beacons">
-      <div class="container">
-        <h1>Choose beacons and fill in the order form?</h1>
-        <CardsContainer/>
-      </div>
-    </section>
+    <CardsContainer/>
 
-    <section class="form">
-      <SectionForm/>
-      <div class="formImg">
-        <img src="@/assets/img/beacons.png" alt class='absolute-image'>
-      </div>
-    </section>
+    <SectionForm/>
 
-    <footer>
-      <img src="@/assets/img/wave-vs-hand.png" alt class='absolute-image'>
-      <Footer/>
-    </footer>
+    <Footer/>
   </div>
 </template>
 
@@ -51,71 +35,10 @@ export default {
 @import "./components/reset.scss";
 @import "./components/fonts.scss";
 
-header {
-  background: url("./assets/img/head-bg.png") no-repeat;
-  background-size: 100%;
-  display: block;
-  position: relative;
-  width: 100%;
-  min-height: 700px;
-  img{
-    position: absolute;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    height: 110%;
-    margin-top: 5%;
-  }
-}
-
-.beacons{
-  margin: 75px 0 40px;
-  color: #282828;
-  h1 {
-    text-align: center;
-    margin-bottom: 64px;
-  }
-  .cards {
-    display: flex;
-  }
-}
-
-.form {
-  background: url("./assets/img/bg-beacons.png") no-repeat;
-  background-size: cover;
-  display: block;
-  position: relative;
-  float: left;
-  width: 100%;
-  .formImg {
-    position: absolute;
-    box-sizing: border-box;
-    right: 0;
-    height: 100%;
-    top: 0;
-    margin-top: -23px;
-  }
-}
-
-footer {
-  background: url("./assets/img/footer-bg.png") no-repeat;
-  background-size: cover;
-  display: block;
-  position: relative;
-  float: left;
-  width: 100%;
-  img {
-    position: absolute;
-    box-sizing: border-box;
-    left: 0;
-    bottom: 0;
-    height: 170%;
-  }
-}
-
 h1 {
   font-family: "Lato Black";
   font-size: 36px;
+  margin: 0.67em 0;
 }
 
 li {
@@ -130,29 +53,38 @@ a {
 }
 
 .container{
-  display: block;
-  width: 1170px;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 30px;
+  &::before{
+    content: ' ';
+    display: table;
+    box-sizing: border-box;
+  }
+  &::after{
+    clear: both;
+    content: ' ';
+    display: table;
+    box-sizing: border-box;
+  }
 }
 
-@media (max-width: 1366px) {
-  header img {
-    height: 50%;
-  }
-  footer img {
-    height: 100%
-  }
+@media (min-width: 1366px) {
   .container {
-    max-width: 960px;
-  }
-  h1 {
-    font-size: 30px;
+    width: 1170px;
   }
 }
 
-@media (max-width: 1200px) {
-  .absolute-image {
-    display: none;
+@media (max-width: 1366px) and (min-width: 1030px) {
+  .container {
+    width: 970px;
+
+  }
+}
+
+@media (max-width: 1030px) and (min-width: 810px) {
+  .container {
+    width: 750px;
   }
 }
 </style>

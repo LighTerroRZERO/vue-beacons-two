@@ -1,8 +1,8 @@
 <template>
   <div class="counter">
-    <span v-on:click="counterDown()">-</span>
+    <span class="sign" v-on:click="counterDown()">-</span>
     <span>{{ quantity }}</span>
-    <span v-on:click="counterUp()">+</span>
+    <span class="sign" v-on:click="counterUp()">+</span>
   </div>
 </template>
 
@@ -30,19 +30,34 @@ export default {
 
 <style lang="scss" scoped>
 .counter {
-  width: 100px;
-  border: 1px solid #e3e3e3;
-  border-radius: 25px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  span {
+  position: relative;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 25px;
+
+  .sign {
     font-family: Lato, sans-serif;
-    font-weight: 400;
-    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #282828;
     &:hover {
       cursor: pointer;
     }
+  }
+
+  span {
+    border: none;
+    text-align: center;
+    width: 50px;
   }
 }
 </style>

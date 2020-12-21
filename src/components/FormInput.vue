@@ -1,6 +1,11 @@
 <template>
   <div>
-    <input :type=item.type :name=item.name :placeholder=item.placeholder required>
+    <input  :type=item.type
+            :name=item.name
+            :placeholder=item.placeholder
+            v-model="info"
+            @blur="getInfo()"
+            required>
   </div>
 </template>
 
@@ -12,7 +17,32 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      info: '',
+    };
+  },
+  methods: {
+    getInfo() {
+      if (this.item.type === 'text') {
+        if (this.info) {
+          this.$emit('validateInfo', true);
+        } else {
+          this.$emit('validateInfo', false);
+        }
+      } else if (!this.info) {
+        this.$emit('validateInfo', false);
+      } else {
+        this.$emit('validateInfo', this.validEmail(this.info));
+      }
+    },
+    validEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
+  },
 };
+
 </script>
 
 <style lang="scss" scoped>
